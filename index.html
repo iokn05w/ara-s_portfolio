@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ 오아라를 소개합니다 ] - 기계공학 포트폴리오</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Noto+Sans+KR:wght@300;400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cobalt: {
+                            950: '#020722',
+                            900: '#04134e',
+                            800: '#07207c',
+                            700: '#0c35b8',
+                            600: '#144be6',
+                            500: '#2d68ff',
+                        },
+                        coral: {
+                            500: '#ff3a20',
+                            600: '#e02810',
+                            glow: 'rgba(255, 58, 32, 0.6)',
+                        },
+                        neonYellow: '#ffe600',
+                        cyanGlow: '#00f0ff',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans KR"', 'sans-serif'],
+                        tech: ['"Chakra Petch"', 'sans-serif'],
+                        display: ['"Orbitron"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --neon-orange: #ff3a20;
+            --electric-blue: #0c35b8;
+            --holo-grad: linear-gradient(135deg, #ff007f 0%, #00f0ff 25%, #ffe600 50%, #9000ff 75%, #00f0ff 100%);
+            --chrome-metal: linear-gradient(180deg, #ffffff 0%, #cbd5e1 30%, #475569 50%, #94a3b8 80%, #ffffff 100%);
+            --dark-metal: linear-gradient(145deg, #0f1d4a, #060e29);
+        }
+
+        body {
+            background-color: #020722;
+            color: #e2e8f0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 240, 255, 0.25) 0%, transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 127, 0.25) 0%, transparent 45%),
+                radial-gradient(circle at 50% 75%, rgba(255, 230, 0, 0.18) 0%, transparent 50%),
+                radial-gradient(circle at 20% 85%, rgba(12, 53, 184, 0.6) 0%, transparent 60%);
+            background-attachment: fixed;
+        }
+
+        /* Y2K Retro Cyber Grid */
+        .bg-cyber-grid {
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 58, 32, 0.12) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        /* Metallic Panels with Hologram Edges */
+        .metal-panel {
+            background: rgba(7, 26, 85, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                inset 1px 1px 0px rgba(255, 255, 255, 0.5),
+                inset -1px -1px 0px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(12, 53, 184, 0.4),
+                0 10px 30px rgba(2, 7, 34, 0.8);
+            position: relative;
+        }
+
+        .metal-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: var(--holo-grad);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .metal-panel:hover::after {
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+
+        /* Angled Cut Corners */
+        .clip-notch {
+            clip-path: polygon(
+                0 14px, 14px 0, 
+                calc(100% - 14px) 0, 100% 14px, 
+                100% calc(100% - 14px), calc(100% - 14px) 100%, 
+                14px 100%, 0 calc(100% - 14px)
+            );
+        }
+
+        .clip-notch-lg {
+            clip-path: polygon(
+                0 22px, 22px 0, 
+                calc(100% - 22px) 0, 100% 22px, 
+                100% calc(100% - 22px), calc(100% - 22px) 100%, 
+                22px 100%, 0 calc(100% - 22px)
+            );
+        }
+
+        /* Chrome Screw/Bolt */
+        .bolt {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffffff 10%, #94a3b8 60%, #1e293b 100%);
+            box-shadow: 0 0 4px rgba(255,255,255,0.8), inset 0 0 2px rgba(0,0,0,0.9);
+            position: absolute;
+            z-index: 2;
+        }
+        .bolt::after {
+            content: '';
+            position: absolute;
+            top: 4px; left: 1px; width: 8px; height: 2px;
+            background: #090d1a;
+            transform: rotate(45deg);
+        }
+
+        /* Chrome Text Effect */
+        .text-chrome {
+            background: var(--chrome-metal);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(0,240,255,0.4));
+        }
+
+        /* Cosmic Starburst Animations */
+        @keyframes starTwinkle {
+            0%, 100% { transform: scale(0.8) rotate(0deg); opacity: 0.6; filter: drop-shadow(0 0 4px #00f0ff); }
+            50% { transform: scale(1.25) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 12px #ffe600); }
+        }
+
+        .animate-twinkle {
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes holoShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-holo-anim {
+            background: linear-gradient(90deg, #ff007f, #00f0ff, #ffe600, #ff3a20, #00f0ff);
+            background-size: 300% 300%;
+            animation: holoShift 6s ease infinite;
+        }
+
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .animate-spin-slow { animation: spinSlow 22s linear infinite; }
+        .animate-spin-reverse { animation: spinReverse 15s linear infinite; }
+
+        /* Y2K Sticker Badge Style */
+        .y2k-badge {
+            background: linear-gradient(135deg, #ffe600, #ff3a20);
+            color: #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 3px 3px 0px #00f0ff, -2px -2px 0px #ff007f;
+            transform: rotate(-2deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #020722; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #00f0ff, #ff3a20, #ffe600);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen bg-cyber-grid text-slate-100 selection:bg-coral-500 selection:text-white">
+
+    <!-- Dynamic Spark & Cosmic Starburst Canvas Overlay -->
+    <canvas id="cosmicCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-80"></canvas>
+
+    <!-- FLOATING DECORATIVE Y2K CELESTIAL MOTIFS (Static Collage Elements) -->
+    <div class="fixed top-12 left-6 pointer-events-none z-0 opacity-40 animate-twinkle hidden lg:block">
+        <!-- SVG Sun/Starburst Motif -->
+        <svg width="120" height="120" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="20" fill="url(#sunGrad)" />
+            <path d="M50 0 L55 35 L90 10 L65 45 L100 50 L65 55 L90 90 L55 65 L50 100 L45 65 L10 90 L35 55 L0 50 L35 45 L10 10 L45 35 Z" fill="#ffe600" opacity="0.8"/>
+            <defs>
+                <radialGradient id="sunGrad">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="60%" stop-color="#ff3a20"/>
+                    <stop offset="100%" stop-color="#00f0ff"/>
+                </radialGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <div class="fixed bottom-16 right-8 pointer-events-none z-0 opacity-30 animate-twinkle hidden lg:block" style="animation-delay: 1.5s;">
+        <!-- Cosmic Black Hole Halo Motif -->
+        <svg width="160" height="160" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="50" cy="50" rx="45" ry="15" fill="none" stroke="#00f0ff" stroke-width="3" transform="rotate(-25 50 50)"/>
+            <ellipse cx="50" cy="50" rx="35" ry="8" fill="none" stroke="#ff007f" stroke-width="2" transform="rotate(-25 50 50)"/>
+            <circle cx="50" cy="50" r="18" fill="#020722" stroke="#ffe600" stroke-width="3"/>
+        </svg>
+    </div>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-cobalt-950/90 backdrop-blur-md border-b border-cyanGlow/40 shadow-[0_4px_20px_rgba(0,240,255,0.2)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand / Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded bg-holo-grad p-[2px] shadow-[0_0_12px_#00f0ff]">
+                        <div class="w-full h-full bg-cobalt-950 rounded flex items-center justify-center">
+                            <i class="fa-solid fa-gear text-coral-500 text-base animate-spin-slow"></i>
+                        </div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black tracking-wider text-xl text-chrome">ARA_LOG</span>
+                        <span class="text-[9px] font-tech text-cyanGlow -mt-1 tracking-widest">COSMIC_MECHA_SYS v3.0</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 font-medium text-xs lg:text-sm">
+                    <a href="#home" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        🏠 홈
+                    </a>
+                    <a href="#profile" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        👤 프로필
+                    </a>
+                    <a href="#projects" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        💻 프로젝트/기술
+                    </a>
+                    <a href="#growth" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        🌱 성장과정
+                    </a>
+                    <a href="#playlab" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        🎬 플레이 랩
+                    </a>
+                    <a href="#contact" class="nav-btn px-3 py-1.5 rounded text-slate-200 hover:text-white hover:bg-cobalt-800/80 transition-all border border-transparent hover:border-cyanGlow/60">
+                        ✉️ 연락하기
+                    </a>
+                </nav>
+
+                <!-- Y2K Interactive Sticker Tag -->
+                <div class="hidden lg:flex items-center px-3 py-1 rounded y2k-badge text-[11px] font-tech">
+                    <i class="fa-solid fa-sparkles mr-1"></i> ACTIVE PORTFOLIO
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded text-slate-200 hover:text-coral-500 hover:bg-cobalt-800 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileDrawer" class="hidden md:hidden bg-cobalt-950/95 border-b border-cyanGlow px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <a href="#home" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">🏠 홈</a>
+            <a href="#profile" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">👤 프로필</a>
+            <a href="#projects" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">💻 프로젝트/기술</a>
+            <a href="#growth" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">🌱 성장과정</a>
+            <a href="#playlab" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">🎬 플레이 랩</a>
+            <a href="#contact" class="mobile-link block px-3 py-2 rounded hover:bg-cobalt-800 hover:text-coral-500">✉️ 연락하기</a>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 py-10">
+
+        <!-- 1. HOME / HERO SECTION -->
+        <section id="home" class="min-h-[82vh] flex flex-col justify-center items-center lg:flex-row gap-12 pt-4">
+            
+            <!-- Left Column: Intro Text -->
+            <div class="flex-1 space-y-6 text-center lg:text-left">
+                <!-- System Status Ribbon -->
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-cobalt-950/90 border border-cyanGlow/60 shadow-[0_0_15px_rgba(0,240,255,0.4)]">
+                    <i class="fa-solid fa-atom text-coral-500 text-xs animate-spin-slow"></i>
+                    <span class="text-xs font-tech text-cyanGlow font-bold tracking-widest">MECHANICAL ENGINEERING PORTFOLIO</span>
+                </div>
+
+                <!-- Main Title -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight">
+                    <span class="text-chrome block mb-2">오아라를 소개합니다.</span>
+                    <span class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-coral-500 font-tech drop-shadow-[0_0_10px_#ff3a20]">
+                        기계공학 × 호기심 × 연결하는 사고
+                    </span>
+                </h1>
+
+                <!-- Intro Description Metal Card -->
+                <div class="metal-panel p-6 rounded-lg clip-notch text-slate-200 leading-relaxed text-sm sm:text-base border-l-4 border-l-coral-500">
+                    <div class="bolt top-2 left-2"></div>
+                    <div class="bolt top-2 right-2"></div>
+                    <div class="bolt bottom-2 right-2"></div>
+                    <p class="mb-3 font-bold text-slate-100 text-base sm:text-lg">
+                        "궁금한 것을 그냥 지나치지 않고, 원리를 찾아보고 서로 연결해 보는 학생."
+                    </p>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        기계공학을 중심으로 로봇과 기계의 움직임, 구조와 설계가 실제로 어떻게 작동하는지 깊이 있게 탐구하고 있습니다. 단순한 작동을 넘어 메커니즘의 근본적 논리를 탐색합니다.
+                    </p>
+                </div>
+
+                <!-- Call To Action Buttons -->
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#projects" class="group relative inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-bold text-slate-900 bg-holo-grad shadow-[0_0_20px_rgba(0,240,255,0.6)] hover:scale-105 transition-all border border-white">
+                        <i class="fa-solid fa-compass text-slate-900"></i>
+                        <span>프로젝트 탐색</span>
+                    </a>
+                    <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-bold text-slate-100 bg-cobalt-900/90 border border-cyanGlow hover:border-coral-500 hover:text-coral-500 transition-all shadow-lg">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span>연락하기</span>
+                    </a>
+                </div>
+
+                <!-- Quick Badges -->
+                <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-3 text-xs font-tech">
+                    <span class="px-3 py-1 rounded bg-cobalt-950/90 border border-slate-600 text-cyanGlow"><i class="fa-solid fa-microchip text-coral-500 mr-1"></i> ARDUINO</span>
+                    <span class="px-3 py-1 rounded bg-cobalt-950/90 border border-slate-600 text-neonYellow"><i class="fa-solid fa-cube text-neonYellow mr-1"></i> CAD & DESIGN</span>
+                    <span class="px-3 py-1 rounded bg-cobalt-950/90 border border-slate-600 text-pink-400"><i class="fa-solid fa-bolt text-pink-400 mr-1"></i> KINEMATICS</span>
+                </div>
+            </div>
+
+            <!-- Right Column: ARA MECHA CORE (Rotating Cosmic HUD) -->
+            <div class="flex-1 flex justify-center items-center w-full max-w-md lg:max-w-none py-6">
+                <div class="relative w-80 h-80 sm:w-96 sm:h-96 flex items-center justify-center">
+                    
+                    <!-- Decorative Starburst Flare Behind Core -->
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-80">
+                        <div class="w-full h-1 bg-gradient-to-r from-transparent via-cyanGlow to-transparent transform rotate-45"></div>
+                        <div class="w-full h-1 bg-gradient-to-r from-transparent via-coral-500 to-transparent transform -rotate-45"></div>
+                    </div>
+
+                    <!-- Outer Holographic Ring 1 -->
+                    <div class="absolute inset-0 rounded-full border-2 border-dashed border-cyanGlow/60 animate-spin-slow"></div>
+                    
+                    <!-- Outer Metallic Segmented Ring 2 -->
+                    <div class="absolute inset-4 rounded-full border-4 border-transparent border-t-neonYellow border-b-coral-500 border-r-cyanGlow animate-spin-reverse"></div>
+                    
+                    <!-- Inner Tech Circle Gradient -->
+                    <div class="absolute inset-10 rounded-full bg-gradient-to-br from-cobalt-900 via-cobalt-950 to-slate-950 border-2 border-cyanGlow/50 shadow-[0_0_50px_rgba(0,240,255,0.5)] flex items-center justify-center">
+                        <div class="absolute inset-0 border-t border-b border-cyanGlow/30 my-auto h-0"></div>
+                        <div class="absolute inset-0 border-l border-r border-cyanGlow/30 mx-auto w-0"></div>
+                    </div>
+
+                    <!-- Orbiting Glowing Planets/Nodes -->
+                    <div class="absolute inset-0 animate-spin-slow">
+                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-coral-500 shadow-[0_0_15px_#ff3a20]"></div>
+                        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-neonYellow shadow-[0_0_12px_#ffe600]"></div>
+                    </div>
+
+                    <!-- CENTER CORE CONTAINER -->
+                    <div class="relative z-10 text-center flex flex-col items-center justify-center p-6 rounded-full bg-cobalt-950/95 border-2 border-white shadow-2xl w-52 h-52 sm:w-60 sm:h-60 clip-notch">
+                        
+                        <span class="text-[10px] font-tech text-cyanGlow tracking-widest uppercase mb-1">CORE_ENGINE v3.0</span>
+                        
+                        <!-- Main ARA Text (Chrome & Holographic) -->
+                        <h2 class="text-5xl sm:text-6xl font-black font-display tracking-wider text-chrome transform -rotate-6 italic my-1 hover:scale-110 transition-transform cursor-pointer">
+                            ARA
+                        </h2>
+
+                        <!-- Mindset Orbital Ribbon -->
+                        <div class="mt-2 px-3 py-1 rounded-full bg-cobalt-800/90 border border-neonYellow/60 shadow-lg">
+                            <p class="text-[11px] font-bold text-slate-100">
+                                <span class="text-coral-500">관찰</span> → 
+                                <span class="text-neonYellow">생각</span> → 
+                                <span class="text-cyanGlow">연결</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Floating HUD Metric Tags -->
+                    <div class="absolute -top-3 right-2 bg-cobalt-950/90 px-2.5 py-1 rounded border border-cyanGlow text-[10px] font-tech text-cyanGlow shadow-lg">
+                        SPEED: <span class="text-neonYellow">18.4 RPM</span>
+                    </div>
+                    <div class="absolute -bottom-3 left-2 bg-cobalt-950/90 px-2.5 py-1 rounded border border-coral-500 text-[10px] font-tech text-coral-500 shadow-lg">
+                        CORE: <span class="text-emerald-400">OPTIMAL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROFILE / 프로필 -->
+        <section id="profile" class="space-y-10 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-4 border-b border-cobalt-700 pb-4">
+                <div class="w-4 h-9 bg-coral-500 clip-notch shadow-[0_0_12px_#ff3a20]"></div>
+                <div>
+                    <span class="text-xs font-tech text-cyanGlow tracking-widest uppercase">01 / MINDSET & IDENTITY</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-chrome">저는 어떤 사람인가요?</h2>
+                </div>
+            </div>
+
+            <!-- Core Philosophy Banner -->
+            <div class="metal-panel p-6 sm:p-8 rounded-lg clip-notch-lg border border-cyanGlow/60 shadow-2xl">
+                <div class="bolt top-3 left-3"></div>
+                <div class="bolt top-3 right-3"></div>
+                <div class="bolt bottom-3 left-3"></div>
+                <div class="bolt bottom-3 right-3"></div>
+
+                <div class="max-w-4xl mx-auto space-y-4 text-slate-100 leading-relaxed text-sm sm:text-base">
+                    <i class="fa-solid fa-quote-left text-3xl text-cyanGlow/50 mb-1 block"></i>
+                    <p class="font-bold text-slate-100 text-base sm:text-xl">
+                        새로운 것을 보면 <span class="text-coral-500 font-black">"어떻게 되는 걸까?"</span>라는 질문부터 시작합니다.
+                    </p>
+                    <p class="text-slate-200">
+                        기계가 움직이는 원리, 로봇이 사람의 행동을 대신하는 방식, 무대 장치가 공간을 바꾸는 과정처럼 결과보다 그 뒤의 원리와 구조를 알아가는 것을 좋아합니다. 특히 서로 다른 개념이 연결되는 순간에 흥미를 느끼며, 하나의 답에 머무르기보다 새로운 질문으로 확장해 가는 편입니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 4 Mindset Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Card 01 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-coral-500 transition-all group">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="text-3xl font-tech font-black text-coral-500">01</span>
+                        <span class="p-2.5 rounded bg-cobalt-900 text-cyanGlow group-hover:text-coral-500 transition-colors">
+                            <i class="fa-solid fa-magnifying-glass-chart text-xl"></i>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-coral-500 transition-colors">
+                        탐구형 사고
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        현상의 결과보다 원인과 세부 작동 원리를 궁금해하며 해부적으로 파고듭니다.
+                    </p>
+                </div>
+
+                <!-- Card 02 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-neonYellow transition-all group">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="text-3xl font-tech font-black text-neonYellow">02</span>
+                        <span class="p-2.5 rounded bg-cobalt-900 text-neonYellow group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-diagram-project text-xl"></i>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-neonYellow transition-colors">
+                        연결형 사고
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        수학, 과학, 기술, 그리고 디자인 요소를 분리하지 않고 하나의 유기적 문제 해결 체계로 연결합니다.
+                    </p>
+                </div>
+
+                <!-- Card 03 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-cyanGlow transition-all group">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="text-3xl font-tech font-black text-cyanGlow">03</span>
+                        <span class="p-2.5 rounded bg-cobalt-900 text-cyanGlow group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-lightbulb text-xl"></i>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-cyanGlow transition-colors">
+                        아이디어 확장
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        하나의 관심사에서 단편적 결론에 그치지 않고 파생되는 다른 가능성과 새로운 탐구 질문을 끊임없이 만듭니다.
+                    </p>
+                </div>
+
+                <!-- Card 04 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-pink-400 transition-all group">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="text-3xl font-tech font-black text-pink-400">04</span>
+                        <span class="p-2.5 rounded bg-cobalt-900 text-pink-400 group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-sliders text-xl"></i>
+                        </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-pink-400 transition-colors">
+                        유연한 적응
+                    </h3>
+                    <p class="text-xs sm:text-sm text-slate-300">
+                        새로운 기술 환경이나 가설을 접했을 때 빠르게 핵심 메커니즘을 파악하고 실행 방향을 조정합니다.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Additional Core Identity Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+                <div class="p-4 rounded bg-cobalt-950/80 border border-slate-600">
+                    <div class="text-xs font-tech text-coral-500 font-bold mb-1"><i class="fa-solid fa-bullseye mr-1"></i> 관심 분야</div>
+                    <p class="text-xs font-semibold text-slate-200">기계공학, 로봇, 모터와 구동, 기계 구조, 제품·부품 설계</p>
+                </div>
+                <div class="p-4 rounded bg-cobalt-950/80 border border-slate-600">
+                    <div class="text-xs font-tech text-cyanGlow font-bold mb-1"><i class="fa-solid fa-brain mr-1"></i> 사고 방식</div>
+                    <p class="text-xs font-semibold text-slate-200">하나의 문제를 여러 다각적 관점에서 바라보고 연결해 이해</p>
+                </div>
+                <div class="p-4 rounded bg-cobalt-950/80 border border-slate-600">
+                    <div class="text-xs font-tech text-neonYellow font-bold mb-1"><i class="fa-solid fa-wand-magic-sparkles mr-1"></i> 강점</div>
+                    <p class="text-xs font-semibold text-slate-200">흥미 주제를 발견하고 타 분야와 연결하여 아이디어를 확장</p>
+                </div>
+                <div class="p-4 rounded bg-cobalt-950/80 border border-slate-600">
+                    <div class="text-xs font-tech text-pink-400 font-bold mb-1"><i class="fa-solid fa-flag mr-1"></i> 지향점</div>
+                    <p class="text-xs font-semibold text-slate-200">잘 작동하는 원리를 사람과 환경에 유용한 설계로 연결하는 엔지니어</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 3. PROJECTS & SKILLS / 프로젝트 & 기술 -->
+        <section id="projects" class="space-y-10 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-4 border-b border-cobalt-700 pb-4">
+                <div class="w-4 h-9 bg-coral-500 clip-notch shadow-[0_0_12px_#ff3a20]"></div>
+                <div>
+                    <span class="text-xs font-tech text-cyanGlow tracking-widest uppercase">02 / ENGINEERING LOG</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-chrome">프로젝트 & 핵심 능력</h2>
+                </div>
+            </div>
+
+            <!-- PROJECTS LIST -->
+            <div class="space-y-8">
+                
+                <!-- PROJECT 01 -->
+                <div class="metal-panel p-6 sm:p-8 rounded-lg clip-notch-lg border-l-4 border-l-coral-500 shadow-2xl relative">
+                    <div class="bolt top-3 right-3"></div>
+                    <div class="bolt bottom-3 right-3"></div>
+
+                    <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4 mb-4 border-b border-slate-600/60 pb-3">
+                        <div>
+                            <span class="text-xs font-tech text-coral-500 font-black uppercase tracking-widest">PROJECT 01</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-100">아두이노 RC카 제작</h3>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-tech bg-cobalt-900 text-coral-500 border border-coral-500/50">HARDWARE_BUILT</span>
+                        </div>
+                    </div>
+
+                    <p class="text-sm sm:text-base text-slate-200 leading-relaxed mb-6">
+                        아두이노를 활용해 RC카를 직접 제작하며 회로 설계와 모터 제어가 실제 물리적 움직임으로 이어지는 전체 메커니즘을 경험했습니다. 부품 하나의 정확한 연결과 제어가 전체 시스템 동작에 결합되는 과정을 확인하면서, 기계와 전자 제어가 통합되는 엔지니어링 구조에 관심을 넓혔습니다.
+                    </p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-cyanGlow/50 text-cyanGlow">#아두이노</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-cyanGlow/50 text-cyanGlow">#모터 제어</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-cyanGlow/50 text-cyanGlow">#회로</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-cyanGlow/50 text-cyanGlow">#구동</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-cyanGlow/50 text-cyanGlow">#문제 해결</span>
+                    </div>
+
+                    <!-- Key Insight Box -->
+                    <div class="p-4 rounded bg-cobalt-950/90 border border-coral-500 text-sm font-bold text-slate-100 flex items-center space-x-3 shadow-lg">
+                        <i class="fa-solid fa-key text-coral-500 text-xl"></i>
+                        <span>배운 점 — <strong class="text-coral-500">부분의 작동이 모여 하나의 완결된 시스템이 된다.</strong></span>
+                    </div>
+                </div>
+
+                <!-- PROJECT 02 -->
+                <div class="metal-panel p-6 sm:p-8 rounded-lg clip-notch-lg border-l-4 border-l-cyanGlow shadow-2xl relative">
+                    <div class="bolt top-3 right-3"></div>
+                    <div class="bolt bottom-3 right-3"></div>
+
+                    <div class="flex flex-col lg:flex-row justify-between lg:items-center gap-4 mb-4 border-b border-slate-600/60 pb-3">
+                        <div>
+                            <span class="text-xs font-tech text-cyanGlow font-black uppercase tracking-widest">PROJECT 02</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-slate-100">과학대제전 참여 및 기술 시연</h3>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-tech bg-cobalt-900 text-cyanGlow border border-cyanGlow/50">EXHIBITION_DEMO</span>
+                        </div>
+                    </div>
+
+                    <p class="text-sm sm:text-base text-slate-200 leading-relaxed mb-6">
+                        직접 제작한 RC카 메커니즘을 과학대제전에서 대중과 참가자들에게 소개해 드렸습니다. 단순히 결과물을 보여주는 것에 그치지 않고, 기술적 원리와 모터 구동 모듈의 제어 과정을 타인이 쉽고 흥미롭게 이해하도록 설명하는 경험을 하였습니다. 공학적 기술 자체뿐만 아니라 이를 전달하고 소통하는 능력의 중요성을 정립했습니다.
+                    </p>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-neonYellow/50 text-neonYellow">#과학 커뮤니케이션</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-neonYellow/50 text-neonYellow">#발표</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-neonYellow/50 text-neonYellow">#협업</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-tech bg-cobalt-950 border border-neonYellow/50 text-neonYellow">#전시</span>
+                    </div>
+
+                    <!-- Key Insight Box -->
+                    <div class="p-4 rounded bg-cobalt-950/90 border border-cyanGlow text-sm font-bold text-slate-100 flex items-center space-x-3 shadow-lg">
+                        <i class="fa-solid fa-comments text-cyanGlow text-xl"></i>
+                        <span>배운 점 — <strong class="text-cyanGlow">기술은 설명될 때 더 많은 사람과 가치 있게 연결된다.</strong></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SKILLS MATRIX SECTION -->
+            <div class="pt-4">
+                <h3 class="text-xl font-bold text-slate-100 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-gears text-coral-500"></i>
+                    <span>오아라의 사고 중심 핵심 역량 (SKILLS)</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-5 rounded bg-cobalt-950/90 border border-slate-600 hover:border-coral-500 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-slate-100 text-base">탐구력</span>
+                            <span class="text-xs font-tech text-coral-500 font-bold">EXPLORATION</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300">
+                            현상의 결과에 안주하지 않고, 원인을 끝까지 추적하여 본질적인 메커니즘과 동작 원리까지 파고듭니다.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded bg-cobalt-950/90 border border-slate-600 hover:border-cyanGlow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-slate-100 text-base">연결 사고</span>
+                            <span class="text-xs font-tech text-cyanGlow font-bold">INTEGRATION</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300">
+                            수학, 물리, 전자, 디자인적 수치들을 개별적으로 다루지 않고 하나의 유연한 시스템 체계로 결합합니다.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded bg-cobalt-950/90 border border-slate-600 hover:border-neonYellow transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-slate-100 text-base">기획력</span>
+                            <span class="text-xs font-tech text-neonYellow font-bold">PLANNING</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300">
+                            머릿속의 막연한 아이디어를 목적과 대상에 적합한 구체적 구현 단계와 실질적인 결과물로 구조화합니다.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded bg-cobalt-950/90 border border-slate-600 hover:border-pink-400 transition-colors">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-slate-100 text-base">소통력</span>
+                            <span class="text-xs font-tech text-pink-400 font-bold">COMMUNICATION</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300">
+                            어려운 공학적 개념이나 시뮬레이션 과정을 누구나 직관적으로 이해할 수 있는 언어로 쉽고 명확하게 표현합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 4. GROWTH / 성장과정 -->
+        <section id="growth" class="space-y-10 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-4 border-b border-cobalt-700 pb-4">
+                <div class="w-4 h-9 bg-coral-500 clip-notch shadow-[0_0_12px_#ff3a20]"></div>
+                <div>
+                    <span class="text-xs font-tech text-cyanGlow tracking-widest uppercase">03 / EVOLUTION TRAJECTORY</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-chrome">성장 과정: 호기심의 확장</h2>
+                </div>
+            </div>
+
+            <!-- Mechanical Cosmic Timeline Track -->
+            <div class="relative border-l-2 border-cyanGlow/50 ml-4 sm:ml-8 space-y-10 pl-6 sm:pl-10 my-8">
+                
+                <!-- Timeline Item 01 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-6 h-6 rounded-full bg-cobalt-950 border-2 border-coral-500 flex items-center justify-center shadow-[0_0_12px_#ff3a20]">
+                        <div class="w-2 h-2 rounded-full bg-coral-500"></div>
+                    </div>
+                    
+                    <div class="metal-panel p-5 rounded-lg clip-notch">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-xs font-tech font-bold text-coral-500 px-2 py-0.5 rounded bg-cobalt-900">01 / CURIOSITY</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2">"왜 이렇게 움직이지?"</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            일상에서 마주하는 다양한 기계장치와 모션에 직관적 관심을 가지며, 눈에 보이는 결과보다 그 내면에 숨겨진 작동 메커니즘을 먼저 궁금해하는 탐구 습관이 형성되었습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 02 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-6 h-6 rounded-full bg-cobalt-950 border-2 border-cyanGlow flex items-center justify-center shadow-[0_0_12px_#00f0ff]">
+                        <div class="w-2 h-2 rounded-full bg-cyanGlow"></div>
+                    </div>
+                    
+                    <div class="metal-panel p-5 rounded-lg clip-notch">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-xs font-tech font-bold text-cyanGlow px-2 py-0.5 rounded bg-cobalt-900">02 / EXPLORATION</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2">관심을 과학의 언어로 바꾸다</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            회전력, 모터 토크, 트러스 구조처럼 눈에 보이지 않는 힘의 작용 원리를 물리와 수학의 엄밀한 언어로 치환해 해석하면서 단순 호기심을 정량적 과학 탐구로 구체화했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 03 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-6 h-6 rounded-full bg-cobalt-950 border-2 border-neonYellow flex items-center justify-center shadow-[0_0_12px_#ffe600]">
+                        <div class="w-2 h-2 rounded-full bg-neonYellow"></div>
+                    </div>
+                    
+                    <div class="metal-panel p-5 rounded-lg clip-notch">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-xs font-tech font-bold text-neonYellow px-2 py-0.5 rounded bg-cobalt-900">03 / EXPERIENCE</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2">직접 경험하며 이해하다</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            아두이노 RC카 제작과 과학대제전 참여를 통해 회로·제어·구동이 실제 시스템 안에서 연결되는 과정을 경험했습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 04 -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-6 h-6 rounded-full bg-cobalt-950 border-2 border-pink-400 flex items-center justify-center shadow-[0_0_12px_#f472b6]">
+                        <div class="w-2 h-2 rounded-full bg-pink-400"></div>
+                    </div>
+                    
+                    <div class="metal-panel p-5 rounded-lg clip-notch">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-xs font-tech font-bold text-pink-400 px-2 py-0.5 rounded bg-cobalt-900">04 / EXPANSION</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2">기계를 더 넓은 관점에서 보다</h3>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                            회전무대처럼 예상하지 못했던 곳에서도 기계공학적 원리를 발견하며, 기계가 사람의 경험과 공간을 바꾸는 방식에도 관심을 넓혔습니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 05 (CURRENT) -->
+                <div class="relative group">
+                    <div class="absolute -left-[31px] sm:-left-[47px] top-1 w-6 h-6 rounded-full bg-cobalt-950 border-2 border-coral-500 flex items-center justify-center shadow-[0_0_18px_#ff3a20] animate-pulse">
+                        <div class="w-2.5 h-2.5 rounded-full bg-coral-500"></div>
+                    </div>
+                    
+                    <div class="metal-panel p-6 rounded-lg clip-notch border-2 border-coral-500/80 bg-gradient-to-r from-cobalt-900 via-cobalt-800 to-cobalt-900 shadow-[0_0_25px_rgba(255,58,32,0.3)]">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="text-xs font-tech font-bold text-slate-900 px-2.5 py-0.5 rounded bg-coral-500">05 / CURRENT DIRECTION</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100 mb-2">"왜 그렇게 설계했는가"까지 다가서는 엔지니어</h3>
+                        <p class="text-xs sm:text-sm text-slate-100 leading-relaxed font-semibold">
+                            현재는 로봇과 기계의 원리, 구조와 설계에 대한 관심을 바탕으로 '잘 작동하는 것'을 넘어 <span class="text-coral-500 font-black">'왜 그렇게 설계했는가'</span>까지 생각하는 엔지니어를 향해 탐구하고 있습니다.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 5. PLAY LAB / 플레이 랩 -->
+        <section id="playlab" class="space-y-10 scroll-mt-24">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-4 border-b border-cobalt-700 pb-4">
+                <div class="w-4 h-9 bg-coral-500 clip-notch shadow-[0_0_12px_#ff3a20]"></div>
+                <div>
+                    <span class="text-xs font-tech text-cyanGlow tracking-widest uppercase">04 / EXPERIMENTAL THINKING</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-chrome">PLAY LAB (실험 연구실)</h2>
+                </div>
+            </div>
+
+            <p class="text-sm text-slate-200">
+                완성된 단기 과제에 그치지 않고, <strong>"오아라가 평소 흥미를 느끼고 호기심을 확장 중인 탐구 주제들"</strong>을 모아둔 미래형 아이디어 실험실입니다.
+            </p>
+
+            <!-- Play Lab Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- LAB 01 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-coral-500 transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="px-2.5 py-1 text-[10px] font-tech rounded bg-cobalt-900 text-coral-500 border border-coral-500/40">LAB 01 / STAGE</span>
+                            <i class="fa-solid fa-arrows-spin text-coral-500 group-hover:rotate-180 transition-transform duration-700 text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-coral-500 transition-colors">
+                            무대도 하나의 기계다
+                        </h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            회전무대와 같은 무대 장치를 기계공학의 관점에서 관찰합니다. 회전과 토크, 구조와 안정성의 관계를 탐구합니다.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2 pt-4 border-t border-slate-700">
+                        <div class="flex justify-between text-[11px] font-tech text-slate-300">
+                            <span>RESEARCH_STAGE</span>
+                            <span class="text-coral-500 font-bold">75%</span>
+                        </div>
+                        <div class="w-full h-2 rounded-full bg-cobalt-950 overflow-hidden border border-slate-700">
+                            <div class="h-full bg-gradient-to-r from-coral-500 to-neonYellow w-[75%]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB 02 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-cyanGlow transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="px-2.5 py-1 text-[10px] font-tech rounded bg-cobalt-900 text-cyanGlow border border-cyanGlow/40">LAB 02 / ROBOTICS</span>
+                            <i class="fa-solid fa-robot text-cyanGlow group-hover:bounce transition-transform text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-cyanGlow transition-colors">
+                            기계가 사람을 이해한다면?
+                        </h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            로봇과 인간의 관계에 관심을 두고, 기술이 편리함을 만드는 동시에 어떤 선택과 책임을 요구하는지도 생각합니다.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2 pt-4 border-t border-slate-700">
+                        <div class="flex justify-between text-[11px] font-tech text-slate-300">
+                            <span>HYPOTHESIS_STAGE</span>
+                            <span class="text-cyanGlow font-bold">60%</span>
+                        </div>
+                        <div class="w-full h-2 rounded-full bg-cobalt-950 overflow-hidden border border-slate-700">
+                            <div class="h-full bg-gradient-to-r from-cyanGlow to-cobalt-500 w-[60%]"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LAB 03 -->
+                <div class="metal-panel p-6 rounded-lg clip-notch hover:border-neonYellow transition-all flex flex-col justify-between group">
+                    <div>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="px-2.5 py-1 text-[10px] font-tech rounded bg-cobalt-900 text-neonYellow border border-neonYellow/40">LAB 03 / DESIGN</span>
+                            <i class="fa-solid fa-compass-drafting text-neonYellow group-hover:scale-110 transition-transform text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-neonYellow transition-colors">
+                            움직임을 설계하는 법
+                        </h3>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                            제품과 부품의 형태, 구조, 사용성을 관찰하며 기능하는 구조와 보기 좋은 형태가 어떻게 만나는지 탐구합니다.
+                        </p>
+                    </div>
+
+                    <div class="space-y-2 pt-4 border-t border-slate-700">
+                        <div class="flex justify-between text-[11px] font-tech text-slate-300">
+                            <span>CAD_MODELLING</span>
+                            <span class="text-neonYellow font-bold">88%</span>
+                        </div>
+                        <div class="w-full h-2 rounded-full bg-cobalt-950 overflow-hidden border border-slate-700">
+                            <div class="h-full bg-gradient-to-r from-neonYellow to-pink-500 w-[88%]"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- 6. CONTACT / 연락하기 -->
+        <section id="contact" class="space-y-10 scroll-mt-24 pb-12">
+            
+            <!-- Section Header -->
+            <div class="flex items-center space-x-4 border-b border-cobalt-700 pb-4">
+                <div class="w-4 h-9 bg-coral-500 clip-notch shadow-[0_0_12px_#ff3a20]"></div>
+                <div>
+                    <span class="text-xs font-tech text-cyanGlow tracking-widest uppercase">05 / DIRECT CHANNEL</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-chrome">연락하기 (CONTACT)</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- Info Left Side -->
+                <div class="space-y-6">
+                    <div class="metal-panel p-6 rounded-lg clip-notch">
+                        <h3 class="text-lg font-bold text-slate-100 mb-4 flex items-center gap-2">
+                            <i class="fa-solid fa-address-card text-coral-500"></i>
+                            <span>오아라 탐구 채널</span>
+                        </h3>
+                        <div class="space-y-4 text-xs sm:text-sm">
+                            
+                            <div class="flex items-center justify-between p-3 rounded bg-cobalt-950/90 border border-slate-700 hover:border-cyanGlow transition-colors">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-regular fa-envelope text-coral-500 text-base"></i>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-tech">EMAIL</div>
+                                        <div class="font-bold text-slate-200">ara.portfolio@example.com</div>
+                                    </div>
+                                </div>
+                                <button onclick="copyToClipboard('ara.portfolio@example.com')" class="px-3 py-1 text-[11px] font-tech rounded bg-cobalt-800 text-cyanGlow hover:bg-cyanGlow hover:text-black border border-cyanGlow transition-all">
+                                    COPY
+                                </button>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded bg-cobalt-950/90 border border-slate-700 hover:border-pink-400 transition-colors">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-brands fa-instagram text-pink-400 text-base"></i>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-tech">INSTAGRAM</div>
+                                        <div class="font-bold text-slate-200">@ara.engineering</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-tech text-slate-400">PUBLIC</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded bg-cobalt-950/90 border border-slate-700 hover:border-neonYellow transition-colors">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-brands fa-github text-slate-200 text-base"></i>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-tech">GITHUB</div>
+                                        <div class="font-bold text-slate-200">github.com/ara-engineering</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-tech text-slate-400">CODE</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-3 rounded bg-cobalt-950/90 border border-slate-700 hover:border-cyanGlow transition-colors">
+                                <div class="flex items-center space-x-3">
+                                    <i class="fa-solid fa-flask text-cyanGlow text-base"></i>
+                                    <div>
+                                        <div class="text-[10px] text-slate-400 font-tech">RESEARCH LAB</div>
+                                        <div class="font-bold text-slate-200">ara-lab.example</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-tech text-slate-400">PORTAL</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="metal-panel p-6 rounded-lg clip-notch relative">
+                    <div class="bolt top-2 left-2"></div>
+                    <div class="bolt top-2 right-2"></div>
+
+                    <h3 class="text-lg font-bold text-slate-100 mb-4 font-tech flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-coral-500"></i>
+                        <span>SEND MESSAGE</span>
+                    </h3>
+
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-tech text-slate-300 mb-1">YOUR NAME / 성함</label>
+                            <input type="text" required placeholder="홍길동" class="w-full px-3 py-2 rounded bg-cobalt-950/90 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-cyanGlow">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-tech text-slate-300 mb-1">EMAIL ADDRESS / 이메일</label>
+                            <input type="email" required placeholder="visitor@example.com" class="w-full px-3 py-2 rounded bg-cobalt-950/90 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-cyanGlow">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-tech text-slate-300 mb-1">MESSAGE / 메시지 내용</label>
+                            <textarea rows="4" required placeholder="오아라 학생의 포트폴리오를 보고 궁금한 점이나 의견을 입력해 주세요..." class="w-full px-3 py-2 rounded bg-cobalt-950/90 border border-slate-700 text-sm text-slate-100 focus:outline-none focus:border-cyanGlow"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3 rounded text-sm font-bold text-slate-900 bg-holo-grad hover:scale-[1.02] transition-all duration-300 shadow-xl border border-white">
+                            전송하기 (SUBMIT TRANSMISSION)
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 border-t border-cobalt-800 bg-cobalt-950/90 py-8 text-center text-xs font-tech text-slate-300">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="text-slate-200 font-bold">[ 오아라를 소개합니다 ] — 고등학생 개인 공학 포트폴리오</p>
+            <p class="text-slate-400">DESIGNED WITH HIGH SATURATION ELECTRIC COBALT & CYBER-PSYCHEDELIC CELESTIAL STYLES</p>
+            <p class="text-slate-500">© 2026 ARA OH. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-cobalt-900 border-2 border-cyanGlow text-slate-100 px-5 py-3 rounded shadow-2xl flex items-center space-x-3 clip-notch">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-cyanGlow text-lg"></i>
+        <span id="toastMsg" class="text-xs font-bold"></span>
+    </div>
+
+    <!-- JavaScript logic -->
+    <script>
+        const canvas = document.getElementById('cosmicCanvas');
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Celestial Y2K Starburst Particle Class
+        class CosmicParticle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.alpha = Math.random() * 0.8 + 0.2;
+                this.decay = Math.random() * 0.005 + 0.002;
+                
+                const palette = ['#00f0ff', '#ff3a20', '#ffe600', '#ff007f', '#ffffff'];
+                this.color = palette[Math.floor(Math.random() * palette.length)];
+                this.type = Math.random() > 0.6 ? 'starburst' : 'dot';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.alpha -= this.decay;
+                if (this.alpha <= 0) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.strokeStyle = this.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+
+                if (this.type === 'starburst') {
+                    // Draw 4-point sparkle star
+                    ctx.beginPath();
+                    ctx.moveTo(this.x - this.size * 3, this.y);
+                    ctx.quadraticCurveTo(this.x, this.y, this.x, this.y - this.size * 3);
+                    ctx.quadraticCurveTo(this.x, this.y, this.x + this.size * 3, this.y);
+                    ctx.quadraticCurveTo(this.x, this.y, this.x, this.y + this.size * 3);
+                    ctx.quadraticCurveTo(this.x, this.y, this.x - this.size * 3, this.y);
+                    ctx.fill();
+                } else {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        const cosmicParticles = Array.from({ length: 65 }, () => new CosmicParticle());
+
+        function animateCosmos() {
+            ctx.clearRect(0, 0, width, height);
+            cosmicParticles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCosmos);
+        }
+        animateCosmos();
+
+        // Mobile Menu Drawer
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.add('hidden');
+            });
+        });
+
+        // Toast Popup Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Clipboard Helper using execCommand fallback
+        function copyToClipboard(text) {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+
+            showToast("이메일 주소가 클립보드에 복사되었습니다!");
+        }
+
+        // Contact Form Submission Handler
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast("메시지가 성공적으로 전달되었습니다! 감사합니다.");
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
