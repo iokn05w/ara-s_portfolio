@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ 오아라를 소개합니다 ] - PROJECTS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Noto+Sans+KR:wght@300;400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { 
+                        cobalt: { 950: '#020722', 900: '#04134e' }, coral: { 500: '#ff3a20' }, cyanGlow: '#00f0ff',
+                        y2kBg: '#fbf0f5', y2kPink: '#ff7ebb', y2kPurple: '#a78bfa', y2kBlue: '#38bdf8'
+                    },
+                    fontFamily: { sans: ['"Noto Sans KR"', 'sans-serif'], tech: ['"Chakra Petch"', 'sans-serif'], display: ['"Orbitron"', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dark body { background-color: #020722; color: #e2e8f0; }
+        .dark .text-chrome { background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 30%, #475569 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .dark .metal-panel { background: rgba(7, 26, 85, 0.75); border: 1px solid rgba(255, 255, 255, 0.3); }
+
+        body { background-color: #fbf0f5; color: #334155; transition: background-color 0.3s, color 0.3s; }
+        .text-chrome { background: linear-gradient(180deg, #ff6b9b 0%, #c084fc 50%, #38bdf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .metal-panel { background: rgba(255, 255, 255, 0.85); border: 2px solid #f472b6; box-shadow: 4px 4px 0px #f472b6; }
+        .clip-notch { clip-path: polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px)); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-cobalt-950/90 backdrop-blur-md border-b border-y2kPink dark:border-cyanGlow/40 p-4 transition-colors">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-display text-xl text-chrome font-black tracking-wider">ARA_LOG</a>
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-y2kPurple dark:hover:text-cyanGlow transition-colors">🏠 홈</a>
+                <a href="profile.html" class="hover:text-y2kPurple dark:hover:text-cyanGlow transition-colors">👤 프로필</a>
+                <a href="projects.html" class="text-y2kPink dark:text-coral-500 font-bold border-b-2 border-y2kPink dark:border-coral-500">💻 프로젝트/기술</a>
+                <a href="growth.html" class="hover:text-y2kPurple dark:hover:text-cyanGlow transition-colors">🌱 성장과정</a>
+                <a href="playlab.html" class="hover:text-y2kPurple dark:hover:text-cyanGlow transition-colors">🎬 플레이 랩</a>
+                <a href="contact.html" class="hover:text-y2kPink dark:hover:text-coral-500 transition-colors">✉️ 연락하기</a>
+            </nav>
+            <button id="themeToggle" class="px-3 py-1.5 rounded-full border border-y2kPink dark:border-cyanGlow text-xs font-tech font-bold bg-white dark:bg-cobalt-900 text-y2kPink dark:text-cyanGlow shadow-md hover:scale-105 transition-all">🌙 DARK MODE</button>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-1 space-y-10">
+        <div class="border-b border-y2kPink/40 dark:border-slate-700 pb-4">
+            <span class="text-xs font-tech text-y2kPurple dark:text-cyanGlow uppercase tracking-widest">02 / Engineering Log</span>
+            <h1 class="text-3xl font-bold text-chrome mt-1">프로젝트 & 핵심 능력</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="metal-panel p-6 rounded clip-notch border-l-4 border-l-y2kPink dark:border-l-coral-500 flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-tech text-y2kPink dark:text-coral-500 font-bold tracking-wider">PROJECT 01</span>
+                    <h3 class="text-xl font-bold my-2 text-slate-800 dark:text-white">아두이노 RC카 제작</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">아두이노를 활용해 RC카를 직접 제작하며 회로 설계와 모터 제어가 실제 물리적 움직임으로 이어지는 과정을 경험했습니다.</p>
+                </div>
+                <div class="bg-y2kBg dark:bg-cobalt-950/80 p-3 rounded text-xs font-bold text-y2kPink dark:text-coral-500 border border-y2kPink/40 dark:border-coral-500/30">
+                    💡 배운 점 — 부분의 작동이 모여 하나의 완결된 시스템이 된다.
+                </div>
+            </div>
+
+            <div class="metal-panel p-6 rounded clip-notch border-l-4 border-l-y2kBlue dark:border-l-cyanGlow flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-tech text-y2kBlue dark:text-cyanGlow font-bold tracking-wider">PROJECT 02</span>
+                    <h3 class="text-xl font-bold my-2 text-slate-800 dark:text-white">과학대제전 참여 및 기술 시연</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">제작한 RC카의 메커니즘을 설명하고 시연하며 공학적 지식을 다른 사람과 소통하는 능력을 다졌습니다.</p>
+                </div>
+                <div class="bg-y2kBg dark:bg-cobalt-950/80 p-3 rounded text-xs font-bold text-y2kBlue dark:text-cyanGlow border border-y2kBlue/40 dark:border-cyanGlow/30">
+                    💡 배운 점 — 기술은 설명될 때 더 많은 사람과 가치 있게 연결된다.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-y2kPink/30 dark:border-slate-800 p-6 text-center text-xs font-tech text-slate-500 dark:text-slate-400">
+        © 2026 ARA OH. ALL RIGHTS RESERVED.
+    </footer>
+
+    <script>
+        const toggleBtn = document.getElementById('themeToggle');
+        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.classList.remove('dark');
+            toggleBtn.innerHTML = '🌸 LIGHT MODE';
+        } else {
+            document.documentElement.classList.add('dark');
+            toggleBtn.innerHTML = '🌙 DARK MODE';
+        }
+        toggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                toggleBtn.innerHTML = '🌸 LIGHT MODE';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                toggleBtn.innerHTML = '🌙 DARK MODE';
+            }
+        });
+    </script>
+</body>
+</html>
