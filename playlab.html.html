@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ 오아라를 소개합니다 ] - PLAY LAB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Noto+Sans+KR:wght@300;400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { cobalt: { 950: '#020722', 900: '#04134e' }, coral: { 500: '#ff3a20' }, cyanGlow: '#00f0ff', neonYellow: '#ffe600' } } } }
+    </script>
+    <style>
+        body { background-color: #020722; color: #e2e8f0; font-family: 'Noto Sans KR', sans-serif; }
+        .text-chrome { background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 30%, #475569 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .metal-panel { background: rgba(7, 26, 85, 0.75); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .clip-notch { clip-path: polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px)); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-cobalt-950/90 border-b border-cyanGlow/40 p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-display text-xl text-chrome font-black tracking-wider">ARA_LOG</a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-cyanGlow transition-colors">🏠 홈</a>
+                <a href="profile.html" class="hover:text-cyanGlow transition-colors">👤 프로필</a>
+                <a href="projects.html" class="hover:text-cyanGlow transition-colors">💻 프로젝트/기술</a>
+                <a href="growth.html" class="hover:text-cyanGlow transition-colors">🌱 성장과정</a>
+                <a href="playlab.html" class="text-coral-500 font-bold border-b-2 border-coral-500">🎬 플레이 랩</a>
+                <a href="contact.html" class="hover:text-coral-500 transition-colors">✉️ 연락하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-1 space-y-10">
+        <div class="border-b border-slate-700 pb-4">
+            <span class="text-xs font-tech text-cyanGlow uppercase tracking-widest">04 / Experimental Thinking</span>
+            <h1 class="text-3xl font-bold text-chrome mt-1">PLAY LAB (실험 연구실)</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="metal-panel p-6 rounded clip-notch border border-white/10 hover:border-coral-500 transition-all">
+                <span class="text-xs font-tech text-coral-500 font-bold">LAB 01 / STAGE</span>
+                <h3 class="text-lg font-bold my-2 text-white">무대도 하나의 기계다</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">회전무대와 같은 무대 메커니즘과 토크 분석 탐구</p>
+            </div>
+            <div class="metal-panel p-6 rounded clip-notch border border-white/10 hover:border-cyanGlow transition-all">
+                <span class="text-xs font-tech text-cyanGlow font-bold">LAB 02 / ROBOTICS</span>
+                <h3 class="text-lg font-bold my-2 text-white">기계가 사람을 이해한다면?</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">로봇과 인간 사이 상호작용 및 책임성에 관한 고찰</p>
+            </div>
+            <div class="metal-panel p-6 rounded clip-notch border border-white/10 hover:border-neonYellow transition-all">
+                <span class="text-xs font-tech text-neonYellow font-bold">LAB 03 / DESIGN</span>
+                <h3 class="text-lg font-bold my-2 text-white">움직임을 설계하는 법</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">기능적 기계구조와 아름다운 형태 디자인 결합 탐구</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 p-6 text-center text-xs font-tech text-slate-400">
+        © 2026 ARA OH. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>

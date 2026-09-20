@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[ 오아라를 소개합니다 ] - CONTACT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=Noto+Sans+KR:wght@300;400;600;700;800;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { colors: { cobalt: { 950: '#020722', 900: '#04134e' }, coral: { 500: '#ff3a20' }, cyanGlow: '#00f0ff' } } } }
+    </script>
+    <style>
+        body { background-color: #020722; color: #e2e8f0; font-family: 'Noto Sans KR', sans-serif; }
+        .text-chrome { background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 30%, #475569 50%, #ffffff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .metal-panel { background: rgba(7, 26, 85, 0.75); border: 1px solid rgba(255, 255, 255, 0.3); }
+        .clip-notch { clip-path: polygon(0 14px, 14px 0, calc(100% - 14px) 0, 100% 14px, 100% calc(100% - 14px), calc(100% - 14px) 100%, 14px 100%, 0 calc(100% - 14px)); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <header class="sticky top-0 z-50 bg-cobalt-950/90 border-b border-cyanGlow/40 p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="font-display text-xl text-chrome font-black tracking-wider">ARA_LOG</a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-cyanGlow transition-colors">🏠 홈</a>
+                <a href="profile.html" class="hover:text-cyanGlow transition-colors">👤 프로필</a>
+                <a href="projects.html" class="hover:text-cyanGlow transition-colors">💻 프로젝트/기술</a>
+                <a href="growth.html" class="hover:text-cyanGlow transition-colors">🌱 성장과정</a>
+                <a href="playlab.html" class="hover:text-cyanGlow transition-colors">🎬 플레이 랩</a>
+                <a href="contact.html" class="text-coral-500 font-bold border-b-2 border-coral-500">✉️ 연락하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-1 space-y-10">
+        <div class="border-b border-slate-700 pb-4">
+            <span class="text-xs font-tech text-cyanGlow uppercase tracking-widest">05 / Direct Channel</span>
+            <h1 class="text-3xl font-bold text-chrome mt-1">연락하기 (CONTACT)</h1>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="metal-panel p-6 rounded clip-notch space-y-4">
+                <h3 class="font-bold text-lg border-b border-slate-700 pb-2 text-white">연락처 및 채널 정보</h3>
+                <p class="text-sm text-slate-300"><strong>EMAIL:</strong> ara.portfolio@example.com</p>
+                <p class="text-sm text-slate-300"><strong>INSTAGRAM:</strong> @ara.engineering</p>
+                <p class="text-sm text-slate-300"><strong>GITHUB:</strong> github.com/ara-engineering</p>
+            </div>
+
+            <form class="metal-panel p-6 rounded clip-notch space-y-4">
+                <div>
+                    <label class="block text-xs font-tech mb-1 text-slate-300">성함</label>
+                    <input type="text" placeholder="이름을 입력하세요" class="w-full bg-cobalt-950/80 p-2.5 rounded border border-slate-700 text-sm focus:border-cyanGlow focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-tech mb-1 text-slate-300">이메일</label>
+                    <input type="email" placeholder="이메일을 입력하세요" class="w-full bg-cobalt-950/80 p-2.5 rounded border border-slate-700 text-sm focus:border-cyanGlow focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-tech mb-1 text-slate-300">메시지</label>
+                    <textarea rows="3" placeholder="내용을 입력하세요" class="w-full bg-cobalt-950/80 p-2.5 rounded border border-slate-700 text-sm focus:border-cyanGlow focus:outline-none"></textarea>
+                </div>
+                <button type="button" class="w-full py-3 bg-coral-500 text-black font-bold rounded hover:bg-white transition-all shadow-lg shadow-coral-500/20">전송하기</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-800 p-6 text-center text-xs font-tech text-slate-400">
+        © 2026 ARA OH. ALL RIGHTS RESERVED.
+    </footer>
+
+</body>
+</html>
